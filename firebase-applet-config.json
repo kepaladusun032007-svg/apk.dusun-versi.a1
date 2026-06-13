@@ -1,10 +1,21 @@
-{
-  "projectId": "rich-gecko-q8gvj",
-  "appId": "1:428166995127:web:50df84316407ac9ce90132",
-  "apiKey": "AIzaSyA-yn1oogtFTOb9Cc6FsDYKdXzFH8AxBnk",
-  "authDomain": "rich-gecko-q8gvj.firebaseapp.com",
-  "firestoreDatabaseId": "ai-studio-077c3e5b-9f9b-48e3-bc02-076404156ca0",
-  "storageBucket": "rich-gecko-q8gvj.firebasestorage.app",
-  "messagingSenderId": "428166995127",
-  "measurementId": ""
-}
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDjkr7lfl7Iv42irmCl2osbgjwZwF5UGhw",
+  authDomain: "aplikasi-management-dusun.firebaseapp.com",
+  projectId: "aplikasi-management-dusun",
+  storageBucket: "aplikasi-management-dusun.firebasestorage.app",
+  messagingSenderId: "525455895091",
+  appId: "1:525455895091:web:2a4150ab110b2ee2049146",
+  measurementId: "G-WKS8NGHPEF"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
