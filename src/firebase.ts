@@ -6,13 +6,16 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { initializeFirestore } from "firebase/firestore";
-// Safe dynamic lookup of local config using Vite's glob import (which won't fail the build if the file is absent)
+// Safe dynamic lookup of local config using Vite's glob import with a raw text query to prevent compile-time JSON parsing failures
 let localConfig: any = {};
 try {
-  const configs = import.meta.glob("../firebase-applet-config*.json", { eager: true });
+  const configs = import.meta.glob("../firebase-applet-config*.json", { query: "?raw", eager: true });
   const keys = Object.keys(configs);
   if (keys.length > 0) {
-    localConfig = (configs[keys[0]] as any).default || configs[keys[0]];
+    const rawContent = (configs[keys[0]] as any).default || configs[keys[0]];
+    if (rawContent && typeof rawContent === "string" && rawContent.trim()) {
+      localConfig = JSON.parse(rawContent.trim());
+    }
   }
 } catch (e) {
   // Safe fallback
